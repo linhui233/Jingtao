@@ -1,0 +1,83 @@
+/*上头区*/
+.d1 {
+	/* border: 1px solid  grey; */
+	width: 1200px;
+	height: 100px;
+	margin: 10px auto;
+	font-size: 25px;
+	text-align: right;
+	line-height: 100px;
+	border-bottom:1px solid grey;	
+	
+}
+.d1 img {
+	float: left;
+}
+.d1 a {
+	text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+.d1 a:hover {
+	color: #0080ff;
+}
+
+
+.d2 {
+	/* border: 1px solid grey; */
+	height: 600px;
+	margin : 10px auto;
+	background-image: url(img/new.jpg);
+	position: relative;
+}
+.d3 {
+	width: 1400px;
+	height: 200px;
+	margin: 10px auto;
+	text-align: center;
+	line-height: 200px;
+}
+
+/*表单区*/
+#form {
+	width: 250px;
+	background-color: #b7b4a8;
+	position: absolute;
+	right: 350px;
+	top: 90px;
+	padding: 25px;
+}
+.acc {
+	height:42px;
+	width: 250px;
+}
+#submit {
+	width: 250px;
+    height: 42px;
+    border: 0;
+    line-height: 42px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: #f40;
+    cursor: pointer;
+}
+#i1 {
+	width: 200px;
+	height: 100px;
+}
+
+.all {
+	background-color: black;
+	color: white;
+}
+/*版权区*/
+.d3 span {
+	margin-left: 200px;
+}
+#dont {
+	width: 250px;
+	height: 200px;
+	float: right;
+	
+}

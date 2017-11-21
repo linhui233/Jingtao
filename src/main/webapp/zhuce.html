@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册页</title>
+<style>
+	.d1 {
+		border: 1px solid  grey;
+		/* width: 1200px; */
+		height: 100px;
+		margin: 10px auto;
+		line-height: 100px;
+		/* background-color: white; */
+		background-image: url(img/bkpay.jpg);
+	}
+	.d1 a {
+		text-decoration: none;
+	    cursor: pointer;
+	    color: black;
+	}
+	.d1 a:hover {
+		color: #0080ff;
+	}
+	.d2 {
+		height: 800px;
+		/* background-color: grey; */
+	}
+	.all {
+		background-image: url(img/erji.jpg);
+		
+	}
+	/*主要区*/
+	.main {
+		width: 800px;
+		height: 300px;
+		background-image: url(img/buy.jpg);
+		margin: 0px auto;
+	}
+	form {
+		/* border: 1px solid red; */
+		width: 550px;
+		height: 200px;
+		margin: 0 auto;
+		padding: 20px 200px;
+	}
+	#submit {
+		
+		width: 250px;
+	    height: 42px;
+	    border: 0;
+	    line-height: 42px;
+	    font-size: 16px;
+	    font-weight: 700;
+	    color: #fff;
+	    background: #f40;
+	    cursor: pointer;
+		
+	}
+	.acc {
+		height:30px;
+		width: 250px;
+	}
+	.info {
+		color: white;
+	}
+	.red {
+		color: red;
+	}
+	.green {
+		color: green;
+	}
+</style>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+	//用来设置城市选单
+	window.onload= function(){
+		cities=[
+			["石家庄","保定","廊坊"],
+			["hb1","hb2","hb3"],
+			["sd1","sd2","sd3"],
+			["zg1","zg2","zg3"]
+		];
+		
+	}
+	function x() {
+		console.log(1);
+		var pselect = document.getElementById("province");
+		var index = pselect.value;
+		console.log(index);
+		var pcities = cities[index];
+		console.log(pcities);
+		var cselect = document.getElementById("city");
+		
+		//先删除城市下拉选中的内容
+		cselect.innerHTML = "<option>请选择</option>";
+		
+		if(pcities) {
+			console.log(1);
+			for(var i=0;i<pcities.length;i++) {
+				var option = document.createElement("option");
+				option.innerHTML  = pcities[i];
+				cselect.appendChild(option);
+			}
+			
+		}
+		
+	}
+	//day06 demo1
+	 function checkCode() {
+		console.log("check");
+		var code = $("#code").val();
+		console.log(code);
+		var reg = /^\w{5,15}$/;
+		if(reg.test(code)) {
+			console.log(1);
+			$("#codeInfo").attr("class","green");
+			return true;
+		}else {
+			$("#codeInfo").attr("class","red");
+			return false;
+		}
+		
+	}
+	
+	function checkPwd() {
+		console.log("pwd");
+		var pwd = $("#pwd").val();
+		var reg = /^\w{5,15}$/;
+		if(reg.test(pwd)) {
+			console.log(1);
+			$("#pwdInfo").attr("class","green");
+			return true;
+		}else {
+			$("#pwdInfo").attr("class","red");
+			return false;
+		}
+	}
+	
+</script>
+</head>
+<body>
+	<div class="all">
+	
+		<div class="d1">
+				
+			<span style="margin: 0 300px 0 850px; font-size: 30px">注册页</span>
+			
+			<a href="tologin.login">登陆</a>
+			<a href="#">注册</a>
+			
+		</div>
+		<div class="d2">
+			<div class="main">
+				<form action="zhuce" onsubmit="return checkCode() + checkPwd() ==2" method="post">
+					<p>用户名:<input type="text" class="acc" name="account" onblur="checkCode()" id="code"/>
+						<span style="color : red">*</span>
+						<span class="info" id="codeInfo"><b>5-15位英文、数字、下划线</b></span>
+					</p>
+					<p>&nbsp;密码:<input type="password" class="acc" name="pwd" onblur=" checkPwd()" id="pwd"/>
+						<span style="color : red">*</span>
+						<span class="info" id="pwdInfo"><b>5-15位英文、数字</b></span>
+					</p>
+					<input type="radio" name="sex" value="F"/>男
+					<input type="radio" name="sex" value="M"/>女
+					<p>
+						省:
+						<select name="province" onchange="x()" id="province">
+							<option >请选择</option>
+							<option value="0">湖北</option>
+							<option value="1">上海</option>
+							<option value="2">广州</option>
+							<option value="3">浙江</option>
+						</select>
+						市:
+						<select id="city" name="city">
+							<option>请选择</option>
+						</select>
+					</p>
+		
+					<input type="submit" id="submit"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

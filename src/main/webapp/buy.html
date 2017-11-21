@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>这是购物车</title>
+<style>
+	
+	.d1 {
+		border: 1px solid  grey;
+		width: 1200px;
+		height: 50px;
+		margin: 10px auto;
+		line-height: 50px;
+	}
+
+	.d2 {
+		border: 1px solid grey;
+		height: 300px;
+		margin: 10px auto;
+	} 
+	 .d3 {
+		border: 1px solid grey;
+		height: 600px;
+		margin: 10px auto;
+		text-align: center;
+	} 
+	.user {
+		float: right;
+	}
+	/*图片隐藏*/
+	.hide {
+		display: none;
+	}
+	
+	#lunbo>img {
+		width: 1900px;
+		height: 300px;
+	}
+	.dian {
+		position: relative;
+		top:-50px;
+		
+	}
+	ul .on {
+   	 background-position: 0 0;
+	}
+	ul {
+		text-align: center;
+  	  	padding-top: 5px;
+  	  	position: relative;
+	}
+	 ul li {
+	    cursor: pointer;
+	    display: inline-block;
+	    zoom: 1;
+	    width: 8px;
+	    height: 8px;
+	    margin: 5px;
+	    background: url(img/tg_flash_p.png) -18px 0;
+	    overflow: hidden;
+	    font-size: 0;
+	}
+	
+	
+    
+    table {
+      margin:0 auto;
+      width: 1000px;
+      border:2px solid #aaa;
+      border-collapse:collapse;
+    }
+    table th, table td {
+      border:1px solid #aaa;
+    }
+
+    th {
+      background-color:#eee;
+    }
+    
+</style>
+<script>
+	//页面加载之后
+	window.onload = function() {
+		start();
+	};
+	var id;
+	var n = 0;
+	function start() {
+		
+		//启动定时器,间隔为2S
+		id = setInterval(function(){
+			n++;
+			//获取所有图片
+			var imgs = document.getElementsByTagName("img");
+			//将他们都隐藏
+			for(var i=0;i<imgs.length;i++) {
+				imgs[i].className = "hide";
+			}
+			//找出下一个图片
+			var next = n%imgs.length;
+			//将这个图片显示
+			imgs[next].className = "";
+		},2000);
+		
+	}
+	
+	function stop(){
+		clearInterval(id);
+	}
+</script>
+</head>
+<body>
+	 <div class="d1">
+			
+		<b><span style="font-size:25px ">购物车</span></b>
+		<audio src="musics\Kiss The Rain-Yiruma.mp3" controls></audio>
+		<div class="user">
+			<span class="s1">你的账号:</span>
+			|
+			<span class="s2">你的金额:</span>
+		</div>
+		
+	</div>
+	<div class="d2">
+		<!-- 轮播在day07 demo4 -->
+		<div onmouseover="stop()" onmouseout="start()" id="lunbo">
+			<img src="images/01.jpg"/>
+			<img src="images/02.jpg" class="hide"/>
+			<img src="images/03.jpg" class="hide"/>
+			<img src="images/04.jpg" class="hide"/>
+			<img src="images/05.jpg" class="hide"/>
+			<img src="images/06.jpg" class="hide"/>
+			<div class="dian">
+				<ul>
+					<li class="on">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	<!-- 	 自动点击在jquery demo5
+		验证在day06 demo1 -->
+	</div> 
+	<div class="d3">
+		<table>
+      <tr>
+        <th>商品</th>
+        <th>单价(元)</th>
+        <th>颜色</th>
+        <th>库存</th>
+        <th>好评率</th>
+        <th>操作</th>
+      </tr>   
+      <tr>
+        <td>罗技M185鼠标</td>
+        <td>80</td>
+        <td>黑色</td>
+        <td>893</td>
+        <td>98%</td>
+        <td align="center">
+          <input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/>
+        </td>
+      </tr>
+      <tr>
+        <td>微软X470键盘</td>
+        <td>150</td>
+        <td>黑色</td>
+        <td>9028</td>
+        <td>96%</td>
+        <td align="center">
+          <input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/>
+        </td>
+      </tr>
+      <tr>
+        <td>洛克iphone6手机壳</td>
+        <td>60</td>
+        <td>透明</td>
+        <td>672</td>
+        <td>99%</td>
+        <td align="center">
+          <input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/>
+        </td>
+      </tr>
+      <tr>
+        <td>蓝牙耳机</td>
+        <td>100</td>
+        <td>蓝色</td>
+        <td>8937</td>
+        <td>95%</td>
+        <td align="center">
+          <input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/>
+        </td>
+      </tr>
+      <tr>
+        <td>金士顿U盘</td>
+        <td>70</td>
+        <td>红色</td>
+        <td>482</td>
+        <td>100%</td>
+        <td align="center">
+          <input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/>
+        </td>
+      </tr>
+    </table>
+  
+    <h1>购物车</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>单价(元)</th>
+          <th>数量</th>
+          <th>金额(元)</th>
+          <th>删除</th>
+        </tr>
+      </thead>
+      <tbody id="goods">
+        
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" align="right">总计</td>
+          <td id="total"></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+	</div>
+</body>
+</html>
